@@ -1,0 +1,134 @@
+/*1..Desgin the above database with following table by applying Primary key and Foreign key*/
+
+/* create new database  */
+use sqlassignment;
+
+/* Create Customer table with id as Primary Key */
+
+Create table Customer(
+Id Int Primary key,
+FirstName nvarchar(40),
+LastName nvarchar(40),
+City nvarchar(40),
+Country nvarchar(40),
+Phone nvarchar(20),
+);
+
+create index IndexCustomerName on Customer[FirstName];
+
+
+/* Create Order table with id as Primary Key CustomerId as foreign Key*/
+
+Create table [Order] (
+Id Int Primary key,
+OrderDate datetime,
+OrderNumber nvarchar(10),
+CustomerId int foreign key references Customer(Id),
+TotalAmmount decimal(12,2)
+);
+
+/* Create idexes for Order table*/
+
+create index IndexOrderCustomerId on [Order](CustomerId) ;
+create index IndexOrderOrderDate on [Order](OrderDate); 
+
+
+/* Create Product table with id as Primary Key*/
+
+Create table Product (
+Id Int Primary key,
+ProductName nvarchar(50),
+UnitPrice decimal(12,2),
+Package nvarchar(30),
+IsDiscontinued bit 
+);
+
+/* Create indexes for Product table*/
+
+create index IndexProductSupplierId on [Product](Id) ;
+create index IndexProductName on [Product](ProductName) ;
+
+
+/* Create OrderItem table with id as Primary Key OrderId and Product as foreign Key*/
+
+Create table OrderItem (
+Id Int Primary key,
+OrderId int foreign key references [Order](Id),
+ProductId int foreign key references Product(Id),
+UnitPrice decimal(12,2),
+Quntity int
+); 
+
+/* Create idexes for OrderItem table*/
+
+create index IndexOrderItemOrderId on [OrderItem](OrderId) ;
+create index IndexOrderItemProductId on [OrderItem](ProductId) ;
+
+/*2..Insert Records in all tables 
+--insert records in Customer table--*/
+
+insert into Customer values(
+(1,'shaik','Asia',"kurnool","India",453476);
+(2,'Rani','Kumari','Hyderabad','India','9823241234'),
+(3,'John','Smith','Mumbai','India','98232112234'),
+(4,'Ronaldo','Donald','London','England','8003211223'),
+(5,'Meena','Kumari','Bangalore','India','8693211244')
+);
+
+/*insert records in Order table*/
+
+insert into [Order] values (
+(1,'2022-03-29 02:23:42','5464',1,4500.75),
+(2,'2022-04-19 05:27:00','5023',3,4000.50),
+(3,'2022-02-10 06:21:32','5784',2,3500.40),
+(4,'2022-03-03 18:12:30','5469',4,5500.75),
+(5,'2022-04-21 19:23:21','7856',5,4500.60)
+);
+
+/*insert records in OrderItem table*/
+insert into OrderItem values (
+(1,1,3,4500.75,45),
+(2,3,4,4000.50,35),
+(3,2,6,3500.00,30),
+(4,4,2,5500.75,40),
+(5,5,1,4500.60,50)
+);
+
+
+/*insert records in Product table*/
+
+insert into Product values (
+(1,'TV',4500.75,'Poly bags',1),
+(2,'Mobile',4000.50,'Corrugated boxes',0),
+(3,'Router',3500.00,'Foil sealed bags',1),
+(4,'Bluetooth',5500.75,'Rigid boxes',0),
+(5,'Laptop',4500.60,'Paperboard boxes',0)
+);
+
+/*3..In Customer table FirstName Attribute should not accept null value*/
+
+ALTER TABLE Customer ALTER COLUMN FirstName nvarchar(40) NOT NULL;
+
+
+/*4..In Order table OrderDate should not accept null value*/
+
+ALTER TABLE [Order] ALTER COLUMN OrderDate datetime NOT NULL;
+
+
+/*5..Display all customer details*/
+
+select * from customer
+
+
+/*6...write a query to display Country whose name starts with A or I */
+
+select Country 
+from customer 
+where Country like 'A%' or country like 'I%';
+
+
+/*7..write a query to display whose name of customer whose third character is I */
+
+select FirstName 
+from customer 
+where FirstName like '__i%';
