@@ -67,43 +67,40 @@ create index IndexOrderItemProductId on [OrderItem](ProductId) ;
 /*2..Insert Records in all tables 
 --insert records in Customer table--*/
 
-insert into Customer values(
+insert into Customer values
 (1,'shaik','Asia',"kurnool","India",453476);
 (2,'Rani','Kumari','Hyderabad','India','9823241234'),
 (3,'John','Smith','Mumbai','India','98232112234'),
 (4,'Ronaldo','Donald','London','England','8003211223'),
-(5,'Meena','Kumari','Bangalore','India','8693211244')
-);
+(5,'Meena','Kumari','Bangalore','India','8693211244');
 
 /*insert records in Order table*/
 
-insert into [Order] values (
+insert into [Order] values 
 (1,'2022-03-29 02:23:42','5464',1,4500.75),
 (2,'2022-04-19 05:27:00','5023',3,4000.50),
 (3,'2022-02-10 06:21:32','5784',2,3500.40),
 (4,'2022-03-03 18:12:30','5469',4,5500.75),
-(5,'2022-04-21 19:23:21','7856',5,4500.60)
-);
+(5,'2022-04-21 19:23:21','7856',5,4500.60);
 
 /*insert records in OrderItem table*/
-insert into OrderItem values (
+insert into OrderItem values 
 (1,1,3,4500.75,45),
 (2,3,4,4000.50,35),
 (3,2,6,3500.00,30),
 (4,4,2,5500.75,40),
-(5,5,1,4500.60,50)
-);
+(5,5,1,4500.60,50);
 
 
 /*insert records in Product table*/
 
-insert into Product values (
+insert into Product values 
 (1,'TV',4500.75,'Poly bags',1),
 (2,'Mobile',4000.50,'Corrugated boxes',0),
 (3,'Router',3500.00,'Foil sealed bags',1),
 (4,'Bluetooth',5500.75,'Rigid boxes',0),
-(5,'Laptop',4500.60,'Paperboard boxes',0)
-);
+(5,'Laptop',4500.60,'Paperboard boxes',0);
+
 
 /*3..In Customer table FirstName Attribute should not accept null value*/
 
