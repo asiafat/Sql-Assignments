@@ -1,15 +1,4 @@
-USE OrderDb;
-GO
---Display the details from Customer table who is from country Germany
-
-SELECT * FROM Customer
-WHERE Country= 'GERMANY';
-
-select * from OrderTable
-
-update OrderTable
-set OrderDate='20220402'
-where OrderId=3
+use sqlassignments;
 
 CREATE TABLE Employee(
 EmployeeId int IDENTITY(1,1) PRIMARY KEY,
@@ -18,7 +7,6 @@ LastName nvarchar(40),
 City nvarchar(40),
 Country nvarchar(40),
 Phone nvarchar(40),);
-
 
 
 INSERT INTO Employee VALUES (1,'Imam','shaik','Ananthapur','INDIA','8839293390'),
@@ -30,7 +18,6 @@ INSERT INTO Employee VALUES (1,'Imam','shaik','Ananthapur','INDIA','8839293390')
 --Display the  full name of the employee
 
 SELECT CONCAT(FirstName,'',LastName) AS FullName FROM Employee;
-
 
 
 --Display the  customer details  who has Fax number
